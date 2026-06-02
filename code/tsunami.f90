@@ -20,16 +20,25 @@ program tsunami
     time_loop: do n = 1, nt
         dh(1) = h(1) - h(nx)
         
-        do concurrent (i = 2:nx)
-            dh(i) = h(i) - h(i-1)
-        end do
-
-        do concurrent (i = 1:nx)
-            h(i) = h(i) - c*dh(i) / dx * dt
-        end do
+        h = h - c*diff(h) / dx * dt
 
         print *, n, h
     end do time_loop
     
     print *, n, h
+
+    contains
+
+    function diff(x) result (dx)
+        real, intent(in) :: x(:)
+        real :: dx(size(x))
+        integer :: im
+
+        im = size(x)
+        dx(1) = x(1) - x(im)
+        dx(2:im) = x(2:im) - x(1:im-1)
+    end function diff
+
+        
+
 end program 
