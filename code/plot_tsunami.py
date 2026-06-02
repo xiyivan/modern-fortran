@@ -13,7 +13,7 @@ import os
 
 # --- Configuration ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(SCRIPT_DIR, "tsunami_output.txt")
+DATA_FILE = os.path.join(SCRIPT_DIR, "output", "tsunami_output.txt")
 NX = 100          # number of grid points (must match tsunami.f90)
 
 # --- Parse the output file ---
