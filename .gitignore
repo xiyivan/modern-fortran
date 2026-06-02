@@ -70,3 +70,7 @@ Testing/
 
 # vscode preference
 .vscode
+
+# Execution result
+output/
+
